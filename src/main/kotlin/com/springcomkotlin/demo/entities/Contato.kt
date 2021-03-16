@@ -1,14 +1,14 @@
 package com.springcomkotlin.demo.entities
 
+import com.springcomkotlin.demo.entities.enums.Estado
 import org.hibernate.validator.constraints.Length
 import javax.persistence.*
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotNull
-import javax.validation.constraints.Size
 
 @Entity
 @Table(name = "tb_contatos")
-class Contato (
+class Contato(
         @Id
         @GeneratedValue(strategy = GenerationType.SEQUENCE)
         val id: Long,
@@ -17,7 +17,10 @@ class Contato (
         var nome: String,
         @Email
         @NotNull
-        var email: String
-        )
+        var email: String,
+        @OneToOne
+        var endereco: Endereco
+)
 {
+
 }
